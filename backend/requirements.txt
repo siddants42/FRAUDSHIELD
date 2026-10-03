@@ -1,0 +1,16 @@
+pandas
+numpy
+scikit-learn
+joblib
+matplotlib
+seaborn
+fastapi
+uvicorn[standard]
+python-multipart
+SQLAlchemy
+pydantic
+PyJWT
+pwdlib[argon2]
+email-validator
+pytest
+httpx

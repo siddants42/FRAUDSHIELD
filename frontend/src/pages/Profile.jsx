@@ -1,0 +1,3 @@
+import React from "react";
+import {UserRound, Mail, ShieldCheck} from "lucide-react";
+export default function Profile({user}){return <div className="page"><div className="page-heading"><div><span className="eyebrow">ACCOUNT</span><h1>Your profile</h1><p>Manage the identity connected to your FraudShield workspace.</p></div></div><div className="profile-card panel"><div className="profile-avatar">{user.name.slice(0,1).toUpperCase()}</div><div><h2>{user.name}</h2><p><Mail size={16}/> {user.email}</p><span className="secure-pill"><ShieldCheck size={15}/> Account secured with JWT authentication</span></div></div></div>}

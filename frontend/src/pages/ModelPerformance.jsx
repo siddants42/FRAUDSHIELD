@@ -1,0 +1,9 @@
+import React,{useEffect,useState} from "react";
+import {BrainCircuit, Target, Activity, Gauge} from "lucide-react";
+import {api} from "../services/api";
+export default function ModelPerformance(){
+ const [data,setData]=useState(null); useEffect(()=>{api.model().then(setData)},[]);
+ const m=data?.metrics||{};
+ return <div className="page"><div className="page-heading"><div><span className="eyebrow">MODEL INTELLIGENCE</span><h1>Model performance</h1><p>Transparent metrics for the fraud classification engine.</p></div></div><div className="metric-grid"><Metric icon={<Target/>} label="Precision" value={m.precision}/><Metric icon={<Activity/>} label="Recall" value={m.recall}/><Metric icon={<Gauge/>} label="F1 score" value={m.f1}/><Metric icon={<BrainCircuit/>} label="ROC-AUC" value={m.roc_auc}/></div><div className="grid-two"><div className="panel"><span className="panel-kicker">MODEL</span><h3>Class-weighted Logistic Regression</h3><p className="muted">The baseline model is trained with class balancing because fraud is extremely rare in the dataset. The API uses the saved model artifact for real-time scoring.</p><div className="model-list"><span>Training rows <b>{m.rows?.toLocaleString?.()||"284,807"}</b></span><span>Fraud cases <b>{m.fraud_cases?.toLocaleString?.()||"492"}</b></span><span>PR-AUC <b>{m.pr_auc?Number(m.pr_auc).toFixed(4):"—"}</b></span></div></div><div className="panel"><span className="panel-kicker">CONFUSION MATRIX</span><h3>Validation snapshot</h3><pre className="matrix">{JSON.stringify(m.confusion_matrix||[[0,0],[0,0]],null,2)}</pre></div></div></div>
+}
+function Metric({icon,label,value}){return <div className="metric-card">{<div className="metric-icon">{icon}</div>}<span>{label}</span><strong>{value?`${(Number(value)*100).toFixed(1)}%`:"—"}</strong></div>}

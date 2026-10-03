@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.log
+
+# Environment / local DB
+.env
+fraudshield.db
+*.sqlite
+*.sqlite3
+
+# Node
+node_modules/
+frontend/dist/
+
+# ML generated artifacts
+models/*.joblib
+models/*.pkl
+
+# Dataset: creditcard.csv is ~150 MB and should NOT be pushed to GitHub
+data/*.csv
