@@ -1,6 +1,6 @@
 # FraudShield — Credit Card Fraud Detection
 
-A local-first credit card fraud detection dashboard built with React, Vite, FastAPI, SQLite and scikit-learn.
+A credit card fraud detection dashboard built with React, Vite, FastAPI, SQLite and scikit-learn.
 
 ## Current version
 
